@@ -231,20 +231,20 @@
   </div>
 </section>
 
-<!-- <section class="hero teaser"> -->
-<!--   <div class="container is-max-desktop"> -->
-<!--     <div class="hero-body"> -->
-<!--       <img src="./static/images/main.png" alt="Nerfies" height="100%"> -->
-<!--       <h2 class="subtitle has-text-centered"> -->
-<!--         <!-- <span class="EDM">EDM</span> estimates distortion-aware dense correspondences between pairs of omnidirectional images. -->
-<!--         <div class="content has-text-justified"> -->
-<!--           We propose a complete pipeline for indoor mapping using omnidirectional images, consisting of three key stages: <span style="color:blue">(1) Spherical SfM</span>, <span style="color:brown">(2) Neural Surface Reconstruction</span>, and <span style="color:green">(3) Texture Optimization</span>. -->
-<!--         </p> -->
-<!--         </div> -->
-<!--       </h2> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </section> -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/main.png" alt="DEF360" width="100%" height="100%">
+      <h2 class="subtitle has-text-centered">
+        <span class="EDM">DEF360</span> leverages the prior knowledge of the perspective foudnation model along with graph optimization, thereby enchances 3D structural awareness and achieves superior performance.
+<!--        <div class="content has-text-justified"> -->
+<!--          We propose a complete pipeline for indoor mapping using omnidirectional images, consisting of three key stages: <span style="color:blue">(1) Spherical SfM</span>, <span style="color:brown">(2) Neural Surface Reconstruction</span>, and <span style="color:green">(3) Texture Optimization</span>. -->
+        </p> 
+        </div>
+      </h2>
+    </div>
+  </div>
+</section>
 	
 
 <section class="section">
@@ -254,7 +254,14 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          abstract
+          The increasing use of 360&deg images across various domains has emphasized the need for robust depth estimation techniques tailored for omnidirectional images. 
+          However, obtaining large-scale labeled datasets for 360&deg depth estimation remains a significant challenge. 
+          In this paper, we propose DEF360, a training-free 360&deg monocular depth estimation method that leverages perspective foundation models. 
+          Our approach converts 360&deg images into six-face cubemap representations, where a perspective foundation model is employed to estimate depth and surface normals. 
+          To address depth scale inconsistencies across different faces of the cubemap, we introduce a novel depth scale alignment technique using graph-based optimization, which parameterizes the predicted depth and normal maps while incorporating an additional per-face scale parameter. 
+          This optimization ensures depth scale consistency across the six-face cubemap while preserving 3D structural integrity. 
+          Furthermore, as foundation models exhibit inherent robustness in zero-shot settings, our method achieves superior performance across diverse datasets, including Matterport3D, Stanford2D3D, and 360Loc. 
+          We also demonstrate the versatility of our depth estimation approach by validating its benefits in downstream tasks such as feature matching 3.2 - 5.4% and Structure from Motion 0.2 - 9.7% in AUC@5.
           </p>
         </div>
       </div>
@@ -263,38 +270,161 @@
   </div>
 </section>
 
-<!-- <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Related Links</h2>
-        <div class="content has-text-justified">
-          The renderer is largely based on Jiaxiang Tang's great work <a href="https://github.com/ashawkey/nerf2mesh">NeRF2Mesh</a>.
-          We also borrow  <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> for their excellent website templates.
-        </div>
+
+<!-- Optimization VIDEO -->
+<section class=""hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-centered has-text-centered is-3">Process Visualization
+        <h2>
+          <!-- <font size="+1">
+            Say something here.
+          </font> -->
+          <br>
+        </h2>
+      <div class="columns is-centered has-text-centered">
+        <video width="80%" height="80%" src="./static/videos/mp3d_compressed.mp4" type="video/mp4" loop="true" autoplay="autoplay" controls muted></video>
       </div>
+         <h2 class="subtitle has-text-centered">
+          <font size="+1">
+            Visualization of DEF360 on the Matterport3D dataset.
+          <br>
+          </font>
+        </h2>
+      <br>
+      <div class="columns is-centered has-text-centered">
+        <video width="80%" height="80%" src="./static/videos/concourse_compressed.mp4" type="video/mp4" loop="true" autoplay="autoplay" controls muted></video>
+      </div>
+        <h2 class="subtitle has-text-centered">
+          <font size="+1">
+            Visualization of DEF360 on the 360Loc dataset.
+          <br>
+          <br>
+          </font>
+        </h2>
     </div>
   </div>
-</section>   -->
+</section>
 
-<!-- <section class="hero teaser"> -->
-<!--   <div class="container is-max-desktop"> -->
-<!--     <div class="hero-body"> -->
-<!--       <img src="./static/images/sfm1.png" alt="Nerfies" height="100%"> -->
-<!--       <div class="content has-text-justified"> -->
-<!--         We provide a visual comparison between sparse matching perspective SfM and our proposed dense matching spherical SfM. In (a), ERP images are converted into a cubemap representation, after which feature matching is performed across all 36 possible image pairs, resulting in sparse and noisy correspondence matches. (b) demonstrates our approach, which directly finds dense and accurate correspondences on ERP images, thereby facilitating the construction of a detailed 3D structure. -->
-<!--         </p> -->
-<!--       </div> -->
-<!--       <img src="./static/images/sfm2.png" alt="Nerfies" height="100%"> -->
-<!--       <div class="content has-text-justified"> -->
-<!--         <!-- By leveraging dense features on equirectangular projection (ERP) images, our method effectively finds correspondences in textureless regions. -->
-<!--         By leveraging dense features on equirectangular projection (ERP) images, our method effectively finds correspondences in textureless regions, registers more camera poses, and reconstructs a greater number of 3D points. -->
-<!--         </p> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </section> -->
 
+
+<!-- Pipeline -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="title is-centered has-text-centered is-3">Proposed Method</div>
+
+    <!-- First Image -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="./static/images/pipeline.png" alt="DEF360" width="100%">
+      </div>
+    </div>
+
+    <!-- Second Image -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-half">
+        <img src="./static/images/graph.png" alt="DEF360" width="100%">
+      </div>
+    </div>
+
+    <!-- Caption -->
+    <div class="content has-text-centered has-text-justified">
+        We introduce a novel depth scale alignment technique using <strong>graph-based optimization</strong>, 
+        which parameterizes the predicted depth and normal maps while incorporating an additional <strong>per-face scale parameter</strong>.
+    </div>
+  </div>
+</section>
+
+
+<!-- Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="column is-centered has-text-centered">
+      <h2 class="title is-3">Results</h2>
+
+      <!-- First Image -->
+      <img src="./static/images/results.png" alt="DEF360" height="100%">
+      </p>
+      <div class="content columns is-centered has-text-centered has-text-justified">
+        Qualitative comparisons. Our method demonstrates superior structural accuracy and robustness compared to others.
+      </div>
+
+      <!-- Second Image -->
+      <img src="./static/images/downstream.png" alt="DEF360" height="100%">
+      </p>
+      <div class="content columns is-centered has-text-centered has-text-justified">
+        We demonstrate the versatility of DEF360 by applying it to omnidirectional vision downstream tasks.
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="center-image">
+        <h2 class="title is-3">Point cloud generated by DEF360 </h2>
+      </div>
+
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="5ff969d8cb0b4216abf4edc4d77aac9d" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/cdef188b4767421c94bfdd499b4a79d7/embed"> </iframe> </div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="f2ab3f9541bb4d8db88ea07742a07ade" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/af58ad21b5b04a0c99f1a95c8a61f50b/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="9aa865781ae5499da73a7888cf319a12" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/2d64772d3b894f78b640b7047f9205b0/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="camera_60d217053e7d477098b755a96dba274a_office_2" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/a8e9bcb6da964bd98f0873dd4fa2ff8d/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="camera_60d217053e7d477098b755a96dba274a_office_2" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/a8e9bcb6da964bd98f0873dd4fa2ff8d/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="camera_78562165cddf48b4a68e4453a478795d_office_1" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/e5ffa4d429d04f70a95505cd8cce9b4e/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="camera_78562165cddf48b4a68e4453a478795d_office_1" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/e5ffa4d429d04f70a95505cd8cce9b4e/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="camera_2a235024e6bc44808c695d3156672d26_WC_2_fra" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/e72e145a94354afd9af62b200e30a1e6/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="camera_2a235024e6bc44808c695d3156672d26_WC_2_fra" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/e72e145a94354afd9af62b200e30a1e6/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="atrium-0496" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/c2912812b59c43df93ebc151a7addcfe/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="atrium-0496" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/c2912812b59c43df93ebc151a7addcfe/embed"> </iframe></div>
+        </div>
+
+        <div class="item item-steve">
+          <div class="sketchfab-embed-wrapper"> <iframe title="concourse-0352" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="720" height="480" src="https://sketchfab.com/models/ae8b7af80e314f76bc726360472f918d/embed"> </iframe></div>
+        </div>
+      </div>
+      
+      <!-- <div class="content columns is-centered has-text-justified">
+        
+        </p>
+      </div> -->
+    </div>
+  </div>
+</section>
 
 <!-- <section class="hero is-light is-small"> -->
 <!--   <div class="hero-body"> -->
